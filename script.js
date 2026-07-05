@@ -3,6 +3,11 @@ mobileFix.rel = 'stylesheet';
 mobileFix.href = 'mobile-fixes.css?v=hero-fix-1';
 document.head.appendChild(mobileFix);
 
+const premiumStyle = document.createElement('link');
+premiumStyle.rel = 'stylesheet';
+premiumStyle.href = 'premium-home.css?v=imh-premium-1';
+document.head.appendChild(premiumStyle);
+
 const imhImages = {
   exterior: 'https://upload.wikimedia.org/wikipedia/commons/6/69/IloiloMissionHospital.JPG',
   trainingHall: 'https://upload.wikimedia.org/wikipedia/commons/7/73/CPU_Loreto_D._Tupaz_Hall.jpg',
@@ -101,7 +106,44 @@ function hydrateHospitalImages() {
   });
 }
 
+function enhanceHomeContent() {
+  const heroButtons = [...document.querySelectorAll('.hero p')].find(paragraph => paragraph.querySelector('.btn'));
+  if (heroButtons && !document.querySelector('.trust-strip')) {
+    heroButtons.insertAdjacentHTML('afterend', `
+      <div class="trust-strip" aria-label="Hospital trust indicators">
+        <div class="trust-item"><strong>Since 1901</strong><span>Serving Iloilo families for generations</span></div>
+        <div class="trust-item"><strong>Emergency Support</strong><span>Call the hospital for urgent care concerns</span></div>
+        <div class="trust-item"><strong>Teaching Hospital</strong><span>Clinical care with a training heritage</span></div>
+      </div>
+    `);
+  }
+
+  document.querySelectorAll('.service').forEach(card => {
+    if (card.querySelector('.card-link')) return;
+    const link = document.createElement('a');
+    link.className = 'card-link';
+    link.href = 'services.html';
+    link.textContent = 'Learn more';
+    card.appendChild(link);
+  });
+
+  const contactText = document.querySelector('.blue .contact > div:not(.panel)');
+  const contactButtons = contactText ? [...contactText.querySelectorAll('p')].find(paragraph => paragraph.querySelector('.btn')) : null;
+  if (contactButtons && !contactButtons.classList.contains('contact-actions')) {
+    contactButtons.classList.add('contact-actions');
+    if (!contactButtons.querySelector('[href*="maps"]')) {
+      const directions = document.createElement('a');
+      directions.className = 'btn outline';
+      directions.href = 'https://www.google.com/maps/search/?api=1&query=Iloilo%20Mission%20Hospital%20Mission%20Road%20Jaro%20Iloilo%20City';
+      directions.textContent = 'Directions';
+      directions.rel = 'noopener';
+      contactButtons.appendChild(directions);
+    }
+  }
+}
+
 hydrateHospitalImages();
+enhanceHomeContent();
 
 const header = document.querySelector('.header');
 const toggle = document.querySelector('.toggle');
