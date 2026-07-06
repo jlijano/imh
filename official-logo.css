@@ -1,0 +1,31 @@
+/* Official Iloilo Mission Hospital logo override
+   Keeps the uploaded hospital seal visible across every page without changing HTML structure. */
+
+.mark {
+  background-color: #ffffff;
+  background-image: url('logo.svg?v=official-logo-1');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.brand .mark {
+  border-color: rgba(36, 129, 15, 0.22);
+  box-shadow: 0 12px 28px rgba(16, 35, 26, 0.12);
+}
+
+@media (max-width: 768px) {
+  .mark {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mark {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+}
