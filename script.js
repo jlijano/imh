@@ -10,7 +10,7 @@ document.head.appendChild(premiumStyle);
 
 const mobilePolish = document.createElement('link');
 mobilePolish.rel = 'stylesheet';
-mobilePolish.href = 'mobile-fixes.css?v=mobile-polish-2';
+mobilePolish.href = 'mobile-fixes.css?v=mobile-rebuild-3';
 document.head.appendChild(mobilePolish);
 
 const imhImages = {
