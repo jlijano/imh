@@ -8,6 +8,11 @@ premiumStyle.rel = 'stylesheet';
 premiumStyle.href = 'premium-home.css?v=imh-premium-1';
 document.head.appendChild(premiumStyle);
 
+const mobilePolish = document.createElement('link');
+mobilePolish.rel = 'stylesheet';
+mobilePolish.href = 'mobile-fixes.css?v=mobile-polish-2';
+document.head.appendChild(mobilePolish);
+
 const imhImages = {
   exterior: 'https://upload.wikimedia.org/wikipedia/commons/6/69/IloiloMissionHospital.JPG',
   trainingHall: 'https://upload.wikimedia.org/wikipedia/commons/7/73/CPU_Loreto_D._Tupaz_Hall.jpg',
