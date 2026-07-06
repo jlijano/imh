@@ -1,5 +1,37 @@
-/* Mobile UI/UX polish for homepage image-heavy sections. */
+/* Mobile UI/UX rebuild: prevents horizontal overflow and fixes stacked image/card layouts. */
 @media (max-width: 1024px) {
+  html,
+  body,
+  main {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .wrap,
+  .head,
+  .hero .wrap,
+  .section .wrap,
+  .contact,
+  .media,
+  .showcase-layout,
+  .gallery-grid,
+  .grid,
+  .stats {
+    min-width: 0;
+  }
+
+  .hero .wrap > *,
+  .section .wrap > *,
+  .contact > *,
+  .media > *,
+  .showcase-layout > *,
+  .gallery-grid > *,
+  .grid > *,
+  .stats > * {
+    min-width: 0;
+  }
+
   .hero .wrap {
     gap: 1.75rem;
   }
@@ -32,21 +64,101 @@
 }
 
 @media (max-width: 768px) {
+  .wrap {
+    width: min(100% - 1.25rem, var(--premium-max, 1180px)) !important;
+  }
+
+  .top .wrap,
+  .head {
+    width: min(100% - 1rem, var(--premium-max, 1180px)) !important;
+  }
+
+  .top .wrap {
+    justify-items: start;
+  }
+
+  .top span,
+  .top a,
+  .brand,
+  .brand b,
+  .hero h1,
+  .hero p,
+  .page h1,
+  .page p,
+  .head2 p,
+  .quick h3,
+  .quick p,
+  .service h3,
+  .service p,
+  .card h3,
+  .card p,
+  .stat strong,
+  .stat p,
+  .panel p,
+  .image-caption,
+  .gallery-card figcaption {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
   .hero .wrap {
     padding-block: 2.75rem 2rem;
   }
 
   .hero h1 {
-    font-size: clamp(2.1rem, 10vw, 3rem);
-    line-height: 1.05;
+    max-width: 100% !important;
+    font-size: clamp(2rem, 9.2vw, 2.85rem) !important;
+    line-height: 1.08;
   }
 
   .hero p {
     margin-top: 0.85rem;
+    font-size: 1rem !important;
+    line-height: 1.62;
+  }
+
+  .eyebrow {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+
+  .btn,
+  .hero p:has(.btn) .btn,
+  .page p:has(.btn) .btn,
+  .section p:has(.btn) .btn,
+  .contact-actions .btn,
+  .actions .btn,
+  form .btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .hero p:has(.btn),
+  .page p:has(.btn),
+  .section p:has(.btn),
+  .contact-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.85rem !important;
+    width: 100%;
   }
 
   .trust-strip {
+    grid-template-columns: minmax(0, 1fr) !important;
     margin-top: 1rem;
+  }
+
+  .trust-item {
+    min-width: 0;
   }
 
   .image-card,
@@ -105,18 +217,31 @@
     margin-bottom: 1.25rem !important;
   }
 
-  .contact-actions {
-    gap: 0.7rem !important;
+  .nav ul,
+  .header[data-open="true"] .actions,
+  .g2,
+  .g3,
+  .g4,
+  .stats,
+  .gallery-grid,
+  .formrow {
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 }
 
 @media (max-width: 480px) {
-  .wrap {
-    width: min(100% - 1rem, var(--premium-max, 1180px)) !important;
+  .wrap,
+  .top .wrap,
+  .head {
+    width: calc(100% - 1rem) !important;
   }
 
   .hero .wrap {
-    padding-block: 2.25rem 1.5rem;
+    padding-block: 2.15rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 8.6vw, 2.5rem) !important;
   }
 
   .hero-visual {
@@ -144,6 +269,14 @@
   .stat,
   .panel {
     padding: 0.95rem !important;
+  }
+
+  .quick {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .quick .icon {
+    grid-row: auto !important;
   }
 
   .blue .panel p {
