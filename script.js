@@ -13,6 +13,11 @@ mobilePolish.rel = 'stylesheet';
 mobilePolish.href = 'mobile-fixes.css?v=mobile-rebuild-3';
 document.head.appendChild(mobilePolish);
 
+const officialLogo = document.createElement('link');
+officialLogo.rel = 'stylesheet';
+officialLogo.href = 'official-logo.css?v=official-data-2';
+document.head.appendChild(officialLogo);
+
 const imhImages = {
   exterior: 'https://upload.wikimedia.org/wikipedia/commons/6/69/IloiloMissionHospital.JPG',
   trainingHall: 'https://upload.wikimedia.org/wikipedia/commons/7/73/CPU_Loreto_D._Tupaz_Hall.jpg',
